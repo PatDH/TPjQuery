@@ -1,0 +1,36 @@
+
+.case, .header {
+  float: left;
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+  margin: 0px;
+  text-align: center;
+}
+
+.header {
+  border-color: white;
+}
+
+
+
+.selected {
+  background-color: yellow;
+}
+
+.black {
+  background-color: black;
+}
+
+span.content {
+  position: relative;
+  top: 10%;
+}
+.reset {
+  clear: both;
+  display: block;
+}
+#solve {
+  margin: 20px 0px 0px 0px;
+}
+

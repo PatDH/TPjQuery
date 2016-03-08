@@ -4,20 +4,21 @@
 	<head>
 		<title>Mot croisee</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<script type="text/javascript" src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <link rel="stylesheet" href="board.css" type="text/css" />
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.2.1.min.js"></script>
 		<script type="text/javascript" src="motcroises.js"></script>
 	</head>
 	<body>
 		<h1>Mot croisee</h1>
-		<form id="form" action="submit" target="#">
+		<form id="form" action="submit" target="#" >
 			<p>
 				<input name="filename" type="text" />
 				<input type="submit" value="Confirm" />
 			</p>
 		</form>
-		<div class="board"></div>
-	
-		<p><input type="button" id="next" value="Solve" /></p>
+    <div id="board"/>
+    <div class="reset"/>
+    <input type="button" class="solve" id="solve" value="Solve" />
 	</body>
 </html>
 		
