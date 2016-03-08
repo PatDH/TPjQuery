@@ -32,7 +32,6 @@ function mouseSelect(e){
   }
 }
 
-
 function initialize(content){
   var $row;
   for(var i = 0; i < content.length; ++i) {
@@ -79,6 +78,12 @@ function keyStroke(e){
 
 function arrowStroke(key){
   var $row = $selected.parent();
+//  var $column = $row.index($selected.index()); TODO
+  if(orientation){
+    $row.removeClass("semiselect");
+//  }else{
+//  $column.removeClass("semiselect");
+  }
   var $rows = $row.siblings();
   var lenColumns = $selected.siblings().length;
   var next;
@@ -148,6 +153,13 @@ function arrowStroke(key){
   } while($selected.hasClass("black")
        || $selected.hasClass("header"));
   $selected.addClass("selected");
+  $row = $selected.parent();
+//  $column = $row.index($selected.index()); TODO
+  if(orientation){
+    $row.addClass("semiselect");
+//  }else{
+//    $column.addClass("semiselect");
+  }
 }
 
 function letterStroke(c){
@@ -155,7 +167,8 @@ function letterStroke(c){
   var $rows = $row.siblings();
   var lenColumns = $selected.siblings().length;
   var key = c;
-  $selected.text(c);
+  var $span = $("span", $selected);
+  $span.text(c);
   var nextCase = function() {
     var $n = $selected.next();
     return $n[0] ? $n : undefined;
