@@ -222,7 +222,7 @@ console.log($board);
 };
 
 $(document).ready(() => {
-  $board = $('.board');
+  $board = $('#board');
   var $form = $('#form');
   var lastLoad = null;
   $form.on('submit', (e) => {
