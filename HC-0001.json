@@ -1,0 +1,234 @@
+{"nCols":17,"nRows":17,
+"author":"www.mots-croises.ch","puzzle":"Mots croisés. Grille 1","copyright":"Copyright (c) 2015 Archisoft",
+"diagram":[
+ "-----.------.----"
+,"-----.------.----"
+,"-----------------"
+,"----.---...------"
+,"---.---.---.-----"
+,"---------------.."
+,"...---.-----.----"
+,"-----.---.---.---"
+,"-----------------"
+,"---.---.---.-----"
+,"----.-----.---..."
+,"..---------------"
+,"-----.---.---.---"
+,"------...---.----"
+,"-----------------"
+,"----.------.-----"
+,"----.------.-----"
+],
+"solution":[
+ "IMBUS.PENSEZ.ARTS"
+,"NARRE.EMEUTE.GEAI"
+,"TRANSGRESSERAIENT"
+,"AISE.EST...OURDIE"
+,"CES.OSE.LAD.REINS"
+,"TRANSISTORISANT.."
+,"...AIR.ACCRU.TETU"
+,"LIEGE.BOA.OIE.RAS"
+,"INTERCONTINENTALE"
+,"ECU.SOU.ANS.VASES"
+,"RADE.DRAIN.TER..."
+,"..INTERPRETARIATS"
+,"EPELA.ETE.SIS.PRE"
+,"MARINA...FER.THON"
+,"PRESTIDIGITATIONS"
+,"AUNE.MIREES.ANNEE"
+,"NETS.ETALEE.STERE"
+],
+"numbers":[
+ [1,2,3,4,5,0,6,7,8,9,10,11,0,12,13,14,15]
+,[16,0,0,0,0,0,17,0,0,0,0,0,0,18,0,0,0]
+,[19,0,0,0,0,20,0,0,0,0,0,0,21,0,0,0,0]
+,[22,0,0,0,0,23,0,0,0,0,0,24,0,0,0,0,0]
+,[25,0,0,0,26,0,0,0,27,28,29,0,30,0,0,0,0]
+,[31,0,0,32,0,0,0,33,0,0,0,34,0,0,0,0,0]
+,[0,0,0,35,0,0,0,36,0,0,0,0,0,37,0,38,39]
+,[40,41,42,0,0,0,43,0,0,0,44,0,45,0,46,0,0]
+,[47,0,0,0,0,48,0,0,0,49,0,0,0,50,0,0,0]
+,[51,0,0,0,52,0,0,0,53,0,0,0,54,0,0,0,0]
+,[55,0,0,56,0,57,0,58,0,0,0,59,0,0,0,0,0]
+,[0,0,60,0,61,0,0,0,0,0,62,0,0,0,63,64,65]
+,[66,67,0,0,0,0,68,0,0,0,69,0,0,0,70,0,0]
+,[71,0,0,0,0,72,0,0,0,73,0,0,0,74,0,0,0]
+,[75,0,0,0,0,0,76,77,78,0,0,0,79,0,0,0,0]
+,[80,0,0,0,0,81,0,0,0,0,0,0,82,0,0,0,0]
+,[83,0,0,0,0,84,0,0,0,0,0,0,85,0,0,0,0]
+],
+"acrossClues":[null
+  ,"Se croient supérieurs"
+  ,null
+  ,null
+  ,null
+  ,null
+  ,"Présumez"
+  ,null
+  ,null
+  ,null
+  ,null
+  ,null
+  ,"Modes d'expression de la beauté"
+  ,null
+  ,null
+  ,null
+  ,"Raconté"
+  ,"Soulèvement"
+  ,"Oiseau bigarré"
+  ,"Passeraient par-dessus"
+  ,null
+  ,null
+  ,"Facile à faire"
+  ,"Point cardinal"
+  ,"Tissée"
+  ,"Démonstratif"
+  ,"N'a pas peur"
+  ,"Soigne les chevaux"
+  ,null
+  ,null
+  ,"Rognons"
+  ,"Equipant de résistances"
+  ,null
+  ,null
+  ,null
+  ,"A fredonner ou à siffler"
+  ,"Rendu plus grand"
+  ,"Qui a la tête dure"
+  ,null
+  ,null
+  ,"De quoi faire un bouchon"
+  ,null
+  ,null
+  ,"Mon truc en plumes"
+  ,"Pour faire du foie gras"
+  ,null
+  ,"Très court"
+  ,"Qui concerne des parties du monde"
+  ,null
+  ,null
+  ,null
+  ,"Un peu avant l'Euro"
+  ,"Petite monnaie"
+  ,"Nombreux jours"
+  ,"Récipients"
+  ,"Bassin naturel"
+  ,null
+  ,"Tube percé"
+  ,null
+  ,"Pas assez de deux"
+  ,"Carrières dans la traduction"
+  ,null
+  ,null
+  ,null
+  ,null
+  ,null
+  ,"Les nomma toutes"
+  ,null
+  ,"Saison"
+  ,"Situé"
+  ,"Etendue verte"
+  ,"Complexe en bord de mer"
+  ,null
+  ,"Métal"
+  ,"Poisson"
+  ,"Tours de magie"
+  ,null
+  ,null
+  ,null
+  ,null
+  ,"Ancienne mesure de longueur"
+  ,"Regardées attentivement"
+  ,"Temps de révolution"
+  ,"Bien marqués"
+  ,"Etendue"
+  ,"Unité de volume"
+],
+"downClues":[ null
+  ,"Entier"
+  ,"Unir"
+  ,"Remua"
+  ,"Vase pour les cendres"
+  ,"Possessif"
+  ,"Iraniens anciens"
+  ,"Projette"
+  ,"Sortis"
+  ,"A l'attaque! en avant!"
+  ,"Quart chaud"
+  ,"Très froid quand il est absolu"
+  ,"Opérèrent"
+  ,"Publieras à nouveau"
+  ,"Substance dans l'écorce"
+  ,"A visiter sur le web"
+  ,null
+  ,null
+  ,null
+  ,null
+  ,"Etre couché"
+  ,"Emanation colorée"
+  ,null
+  ,null
+  ,null
+  ,null
+  ,"Saules"
+  ,"Reste pour un bail"
+  ,"Partie d'un cercle"
+  ,"Ferons savoir"
+  ,null
+  ,null
+  ,"Baigné"
+  ,"Mouche piquante"
+  ,"Déposée par la fumée"
+  ,null
+  ,null
+  ,null
+  ,"Foulé"
+  ,"Abîmés"
+  ,"Unir"
+  ,"C'est plus le Pérou"
+  ,"Apprirent"
+  ,"Amas de poils"
+  ,null
+  ,"Verso"
+  ,null
+  ,null
+  ,"Rendu illisible volontairement"
+  ,"Naturel"
+  ,"Complètement sec"
+  ,null
+  ,null
+  ,null
+  ,null
+  ,null
+  ,"Embourbes"
+  ,null
+  ,"Dans le Vaucluse"
+  ,"Ne le dira pas"
+  ,null
+  ,"Aussi"
+  ,"Mouche"
+  ,"Qui n'a plus de voix"
+  ,"Etre bien en évidence"
+  ,"Raisonnable"
+  ,"Largeur de main"
+  ,"Sortie"
+  ,null
+  ,null
+  ,null
+  ,null
+  ,"Affectionne"
+  ,"Abandonnée"
+  ,"Resta"
+  ,null
+  ,"Pas tu"
+  ,"Errera"
+  ,"Résultat du froid"
+  ,"Amas"
+  ,null
+  ,null
+  ,null
+  ,null
+  ,null
+  ,null
+]
+}
