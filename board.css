@@ -1,5 +1,5 @@
 
-.case, .header {
+div.case, div.header {
   float: left;
   border: 1px solid black;
   width: 20px;
@@ -8,7 +8,7 @@
   text-align: center;
 }
 
-.header {
+div.header {
   border-color: white;
 }
 
@@ -20,11 +20,11 @@
   height: 640;
 }
 
-.selected {
+div.selected {
   background-color: yellow;
 }
 
-.black {
+div.black {
   background-color: black;
 }
 
@@ -40,3 +40,7 @@ span.content {
   margin: 20px 0px 0px 0px;
 }
 
+
+/*.semiselect > div.case {
+  background-color: lightgrey;
+}*/
