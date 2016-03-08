@@ -12,7 +12,13 @@
   border-color: white;
 }
 
-
+#across, #topdown {
+  display: block;
+  float:left;
+  border: 1px solid black;
+  width: 340;
+  height: 640;
+}
 
 .selected {
   background-color: yellow;
