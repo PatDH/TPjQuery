@@ -1,4 +1,5 @@
 "use strict"
+
 var $board;
 var $selected;
 
@@ -21,7 +22,9 @@ function select(i, j){
 
 function mouseSelect(e){
   var $newSelected = $(e.target);
-  if(e.target.tagName == "DIV"
+  if(e.target.tagName == "SPAN")
+    $newSelected = $newSelected.parent();
+  if($newSelected[0].tagName == "DIV"
       && !$newSelected.hasClass("header")
       && !$newSelected.hasClass("black")
       && $newSelected.hasClass("case")) {
