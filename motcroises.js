@@ -209,6 +209,8 @@ function del(){
 }
 
 var updateHighlight = function() {
+  var doneover = false;
+  var doneunder = false;
   var $semiselect = $(".semiselect");
   if($semiselect[0])
     $semiselect.removeClass("semiselect");
@@ -225,6 +227,23 @@ var updateHighlight = function() {
         $(this).children().eq(idx).addClass("semiselect");
       }
     });
+  }
+  $selected.addClass("semiselect");
+  $semiselect = $(".semiselect");
+  $semiselect.removeClass("semiselect");
+  for(var i = $semiselect.index($selected)+1; i < $semiselect.length && !doneover; i++){
+    if($semiselect.eq(i).hasClass("black")){
+      doneover = true;
+    }else{
+      $semiselect.eq(i).addClass("semiselect");
+    }
+  }
+  for(var i = $semiselect.index($selected)-1; i >= 0 && !doneunder; i--){
+    if($semiselect.eq(i).hasClass("black")){
+      doneunder = true;
+    }else{
+      $semiselect.eq(i).addClass("semiselect");
+    }
   }
 }
 
