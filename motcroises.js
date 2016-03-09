@@ -23,7 +23,8 @@ function mouseSelect(e){
   var $newSelected = $(e.target);
   if(e.target.tagName == "DIV"
       && !$newSelected.hasClass("header")
-      && !$newSelected.hasClass("black")) {
+      && !$newSelected.hasClass("black")
+      && !$newSelected.hasClass("board")) {
     $selected.removeClass("selected");
     $selected = $newSelected.addClass("selected");
   }
