@@ -53,7 +53,6 @@ function initialize(content){
     }
     $board.append($row);
   }
-  $board.css("width", (content.length+1)*22 + "px");
 }
 
 var initializeClues = function (content) {
@@ -291,6 +290,7 @@ var load = function(motcroise) {
   var $game = $("#game");
   $game.toggle();
   $("#submit").blur();
+  $("#game").css("height", (24*height) + "px");
 };
 
 $(document).ready(() => {
