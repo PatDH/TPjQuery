@@ -27,6 +27,7 @@ function mouseSelect(e){
     $selected.removeClass("selected");
     $selected = $newSelected.addClass("selected");
   }
+  updateHighlight();
 }
 
 function initialize(content){
