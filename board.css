@@ -1,5 +1,9 @@
 
-div.case, div.header {
+#game {
+  display: none;
+}
+
+.case, .header {
   float: left;
   border: 1px solid black;
   width: 20px;
@@ -8,16 +12,26 @@ div.case, div.header {
   text-align: center;
 }
 
-div.header {
+.header {
   border-color: white;
+}
+
+#board {
+  float:left;
+  margin-right: 6px;
+}
+
+ol {
+  text-align: left;
 }
 
 #across, #topdown {
   display: block;
   float:left;
   border: 1px solid black;
-  width: 340;
-  height: 640;
+  width: 400px;
+  margin: 1px;
+  text-align: center;
 }
 
 div.selected {
@@ -32,15 +46,17 @@ span.content {
   position: relative;
   top: 10%;
 }
+
 .reset {
   clear: both;
   display: block;
 }
+
 #solve {
   margin: 20px 0px 0px 0px;
 }
 
 
-/*.semiselect > div.case {
+.semiselect {
   background-color: lightgrey;
-}*/
+}

@@ -1,7 +1,4 @@
 "use strict"
-
-
-
 var $board;
 var $selected;
 
@@ -54,23 +51,53 @@ function initialize(content){
   $board.css("width", (content.length+1)*22 + "px");
 }
 
+var initializeClues = function (content) {
+  var $across = $("<ol>");
+  var $topdown = $("<ol>");
+  for(var i = 0; i < content.numbers.length; ++i) {
+    var row = content.numbers[i];
+    
+    for(var j = 0; j < row.length; ++j) {
+      var clueIdx = row[j];
+      var acrossClue = content.acrossClues[clueIdx];
+      var topdownClue = content.downClues[clueIdx];
+      
+      if(acrossClue) {
+        var $li = $("<li></li>").text(acrossClue);
+        $across.append($li);
+      }
+
+      if(topdownClue) {
+        var $li = $("<li></li>").text(topdownClue);
+        $topdown.append($li);
+      }
+    }
+  }
+  $("#across").append($across);
+  $("#topdown").append($topdown);
+};
+
 function keyStroke(e){
   var c = e.keyCode || e.which;
   if(c >= 37 && c <= 40){
     arrowStroke(c);
+    updateHighlight();
     return e.preventDefault();
   }else if(c >= 65 && c <= 90){
     letterStroke(String.fromCharCode(c));
+    updateHighlight();
     return e.preventDefault();
   }else if(c == 8){
     backspace();
+    updateHighlight();
     return e.preventDefault();
   }else if(c == 46){
     del();
+    updateHighlight();
     return e.preventDefault();
   }else if(c == 32){
     orientation = !orientation;
-    //update();
+    updateHighlight();
     return e.preventDefault();
   }
  
@@ -78,16 +105,9 @@ function keyStroke(e){
 
 function arrowStroke(key){
   var $row = $selected.parent();
-//  var $column = $row.index($selected.index()); TODO
-  if(orientation){
-    $row.removeClass("semiselect");
-//  }else{
-//  $column.removeClass("semiselect");
-  }
   var $rows = $row.siblings();
   var lenColumns = $selected.siblings().length;
   var next;
-  console.log(key);
   switch(key) {
     case 37:
       var prevCase = () => {
@@ -153,13 +173,6 @@ function arrowStroke(key){
   } while($selected.hasClass("black")
        || $selected.hasClass("header"));
   $selected.addClass("selected");
-  $row = $selected.parent();
-//  $column = $row.index($selected.index()); TODO
-  if(orientation){
-    $row.addClass("semiselect");
-//  }else{
-//    $column.addClass("semiselect");
-  }
 }
 
 function letterStroke(c){
@@ -194,6 +207,26 @@ function del(){
   arrowStroke(orientation ? 37 : 38);
 }
 
+var updateHighlight = function() {
+  var $semiselect = $(".semiselect");
+  if($semiselect[0])
+    $semiselect.removeClass("semiselect");
+  if(orientation){
+    $selected.siblings().each(function(index) {
+      if(index > 0) {
+        $(this).addClass("semiselect");
+      }
+    });
+  } else {
+    var idx = $selected.index();
+    $(".row", $("#board")).each(function(index) {
+      if(index > 0) {
+        $(this).children().eq(idx).addClass("semiselect");
+      }
+    });
+  }
+}
+
 var createHeader = function(length) {
   var header = [' '];
   var i = 0;
@@ -204,13 +237,8 @@ var createHeader = function(length) {
   return header;
 }
 
-// Monstre pas beau à arranger je saigne des yeux...
-
 var load = function(motcroise) {
   var content = motcroise.diagram;
-console.log($board);
-  $board.css("display", "block");
-console.log($board);
   var height = motcroise.nRows;
 
   var header = createHeader(motcroise.nCols);
@@ -224,7 +252,8 @@ console.log($board);
 
   // initialiser la table
   initialize(content);
-
+  initializeClues(motcroise);
+ 
   // selection la 1ere case
   select(1, 1);
 
@@ -232,6 +261,12 @@ console.log($board);
   $board.click(mouseSelect);
 
   $(document).keydown(keyStroke);
+
+  updateHighlight();
+
+  var $game = $("#game");
+  $game.toggle();
+  $("#submit").blur();
 };
 
 $(document).ready(() => {
