@@ -24,7 +24,7 @@ function mouseSelect(e){
   if(e.target.tagName == "DIV"
       && !$newSelected.hasClass("header")
       && !$newSelected.hasClass("black")
-      && !$newSelected.hasClass("board")) {
+      && $newSelected.hasClass("case")) {
     $selected.removeClass("selected");
     $selected = $newSelected.addClass("selected");
   }
