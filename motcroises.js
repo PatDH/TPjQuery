@@ -82,8 +82,8 @@ function initialize(content){
 }
 
 var initializeClues = function (content) {
-  var $across = $("<ol></ol>");
-  var $topdown = $("<ol></ol>");
+  var $across = $("#across");
+  var $topdown = $("#topdown");
   for(var i = 0; i < content.numbers.length; ++i) {
     var row = content.numbers[i];
     
@@ -93,12 +93,14 @@ var initializeClues = function (content) {
       var topdownClue = content.downClues[clueIdx];
       
       if(acrossClue) {
-        var $li = $("<li></li>").text(acrossClue).attr("id", "across"+clueIdx);
+        var $li = $("<div></div>").text((i+1)+": ").attr("id", "across"+clueIdx);
+        $li.append($("<span></span>").text(acrossClue));
         $across.append($li);
       }
 
       if(topdownClue) {
-        var $li = $("<li></li>").text(topdownClue).attr("id", "down"+clueIdx);
+        var $li = $("<div></div>").text((j+1)+": ").attr("id", "down"+clueIdx);
+        $li.append($("<span></span>").text(topdownClue));
         $topdown.append($li);
       }
     }
@@ -304,7 +306,9 @@ var load = function(motcroise) {
   // initialiser la table
   initialize(content);
   initializeClues(motcroise);
- 
+  
+  $("#auteur").text(motcroise.author);
+
   // selection la 1ere case
   select(1, 1);
 
@@ -316,7 +320,7 @@ var load = function(motcroise) {
   updateHighlight();
 
   var $game = $("#game");
-  $game.toggle();
+  $game.show();
   $("#submit").blur();
   $("#game").css("height", (24*height) + "px");
 };

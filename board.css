@@ -21,13 +21,10 @@
   margin-right: 6px;
 }
 
-ol {
-  text-align: left;
-}
 
 .block {
   display: block;
-  float:left;
+  float: left;
   height: 100%;
   margin: 1px;
   text-align: center;
@@ -37,7 +34,9 @@ ol {
   border: 1px solid black;
   overflow: auto;
   height: 100%;
+  padding-left: 10px;
   width: 400px;
+  text-align: left;
 }
 
 div.selected {

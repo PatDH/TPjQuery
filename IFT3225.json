@@ -1,0 +1,53 @@
+{"nCols":5,"nRows":6,
+"author":"  par Guy Lapalme pour le cours IFT3225",
+"diagram":[
+ "-----"
+,"-----"
+,"-.---"
+,"..-.-"
+,"-----"
+,"--.--"
+],
+"solution":[
+    "INTER",
+    "ROUTE",
+    "O.NES",
+    "..E.E",
+    "VERRA",
+    "AT.AU"
+],
+"numbers":[
+    [1,2,3,4,5],
+    [6,0,0,0,0],
+    [0,0,7,0,0],
+    [0,0,0,0,0],
+    [8,9,0,10,0],
+    [11,0,0,12,0]
+],
+"acrossClues":[null
+  ,"Dans notre cours, on parle beaucoup de ce type de net."
+  ,null
+  ,null
+  ,null
+  ,null
+  ,"Au Québec, on appelle internet l'info..."
+  ,"Maintenant en vie."
+  ,"Apercevra."
+  ,null
+  ,null
+  ,"On le place au milieu d'une adresse courriel."
+  ,"De l'or chimique."
+],
+"downClues":[ null
+  ,"Notre département."
+  ,"Drame japonais préféré des amateurs de mots croisés."
+  ,"Appareil pour syntoniser."
+  ,"Saison chaude."
+  ,"Essentiel au Web. Ici on ajoute du texte de remplissage à la définition pour vérifier qu'il est possible de traiter des définitions qui sont très très très longues et qui vont forcer l'apparition d'une barre de défilement."
+  ,null
+  ,null
+  ,null
+  ,"Conjonction ou personnage de film."
+  ,"Roulement de tambour."
+]
+}
