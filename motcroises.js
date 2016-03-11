@@ -298,7 +298,7 @@ $(document).ready(() => {
   var $form = $('#form');
   var lastLoad = null;
   $form.on('submit', (e) => {
-    var filename = $('input[name=filename]', $form).val();
+    var filename = $form[0]['request'].value;
     if(/\.json$/.test(filename)) {
       if(lastLoad && lastLoad == filename) {
         alert("File is already loaded!"); //reload
