@@ -252,12 +252,18 @@ function arrowStroke(key){
 }
 
 function letterStroke(c){
+  $selected.removeClass("wrong");
   var $row = $selected.parent();
   var $rows = $row.siblings();
   var lenColumns = $selected.siblings().length;
   var key = c;
   var $span = $("span", $selected);
-  if(!$selected.hasClass("cheat")) $span.text(c);
+  if(!$selected.hasClass("cheat")){
+    $span.text(c);
+    if(c != soluceAt() && c != ' '){
+      $selected.addClass("wrong");
+    }
+  }
   var nextCase = function() {
     var $n = $selected.next();
     return $n[0] ? $n : undefined;
@@ -274,8 +280,7 @@ function letterStroke(c){
 
 function backspace(){
   arrowStroke(orientation ? 37 : 38);
-  letterStroke(' ');
-  arrowStroke(orientation ? 37 : 38);
+  del();
 }
 
 function del(){
@@ -283,10 +288,14 @@ function del(){
   arrowStroke(orientation ? 37 : 38);
 }
 
-function cheat(){
+function soluceAt(){
   var col = $selected.index()-1;
   var row = $selected.parent().index()-1;
-  letterStroke($soluce[row].charAt(col));
+  return $soluce[row].charAt(col);
+}
+
+function cheat(){
+  letterStroke(soluceAt());
   arrowStroke(orientation ? 37 : 38);
   $selected.addClass("cheat");
   arrowStroke(orientation ? 39 : 40);
