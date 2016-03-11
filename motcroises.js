@@ -3,6 +3,7 @@
 var $board;
 var $selected;
 var wordsref;
+var $soluce;
 
 var orientation = true;
 
@@ -172,6 +173,7 @@ function keyStroke(e){
     return e.preventDefault();
   }else if(String.fromCharCode(e.which) == '?'){
     cheat();
+    updateHighlight();
     return e.preventDefault();
   }
   
@@ -255,7 +257,7 @@ function letterStroke(c){
   var lenColumns = $selected.siblings().length;
   var key = c;
   var $span = $("span", $selected);
-  $span.text(c);
+  if(!$selected.hasClass("cheat")) $span.text(c);
   var nextCase = function() {
     var $n = $selected.next();
     return $n[0] ? $n : undefined;
@@ -282,7 +284,12 @@ function del(){
 }
 
 function cheat(){
-  //TODO -------------------------------------------------------------------------------------------------
+  var col = $selected.index()-1;
+  var row = $selected.parent().index()-1;
+  letterStroke($soluce[row].charAt(col));
+  arrowStroke(orientation ? 37 : 38);
+  $selected.addClass("cheat");
+  arrowStroke(orientation ? 39 : 40);
 }
 
 var updateHighlight = function() {
@@ -337,6 +344,7 @@ var createHeader = function(length) {
 var load = function(motcroise) {
   var content = motcroise.diagram;
   var height = motcroise.nRows;
+  $soluce = motcroise.solution;
   
   wordsref = genIndex(motcroise);
 
@@ -394,6 +402,7 @@ $(document).ready(() => {
     return e.preventDefault();	
   });
   $board.click(mouseSelect);
+  $(document).keydown(keyStroke);
   $(document).keypress(keyStroke);
 });
 
