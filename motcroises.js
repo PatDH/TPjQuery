@@ -2,6 +2,7 @@
 
 var $board;
 var $selected;
+var wordsref;
 
 var orientation = true;
 
@@ -15,6 +16,31 @@ var handler = function (nextCase, nextRow, idxCase, idxRow) {
     return nc;
   };
 };
+
+function genIndex(motcroise){
+  var format = motcroise.diagram;
+  var result = Array(motcroise.nRows);
+  var countrow = 0;
+  var countcol = 0;
+  for(var i = 0; i < result.length; i++) {
+    countrow++;
+    result[i] = Array(motcroise.nCols);
+    for(var j = 0; j < result[i].length; j++){
+      result[i][j] = Array(2);
+      if(format[i][j] == ".") countrow++;
+      else result[i][j][0] = countrow;
+    }  
+  }
+  if(motcroise.nRows > 0)
+  for(var j = 0; j < result[0].length; j++){
+    countcol++;
+    for(var i = 0; i < result.length; i++){
+      if(format[i][j] == ".") countcol++;
+      else result[i][j][1] = countcol;
+    }
+  }
+  return result;
+}
 
 function select(i, j){
   $selected = $($($board.children()[i]).children()[j]).toggleClass("selected");
@@ -263,6 +289,8 @@ var createHeader = function(length) {
 var load = function(motcroise) {
   var content = motcroise.diagram;
   var height = motcroise.nRows;
+  
+  wordsref = genIndex(motcroise);
 
   var header = createHeader(motcroise.nCols);
 
