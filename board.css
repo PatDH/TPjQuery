@@ -30,6 +30,11 @@
   text-align: center;
 }
 
+.auteur {
+  display: block;
+  clear: both;
+}
+
 #across, #topdown {
   border: 1px solid black;
   overflow: auto;
