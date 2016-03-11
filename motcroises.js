@@ -54,7 +54,6 @@ function genIndex(motcroise){
       }
     }
   }
-  alert(result);
   return result;
 }
 
