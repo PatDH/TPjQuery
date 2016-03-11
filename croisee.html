@@ -19,9 +19,24 @@
 			</p>
 		</form>
     <div id="game" class="row" >
-      <div id="board"></div>
-      <div id="across"><h2>Horizontal</h2></div>
-      <div id="topdown"><h2>Vertical</h2></div>
+      <hr />
+      <span id="currentClues" ></span>
+      <hr />
+      
+      <div class="block">
+        <div id="board"></div>
+        <div>
+          <span id="auteur">Test</span>
+        </div>
+      </div>
+      <div class="block">
+        <h2>Horizontal</h2>
+        <div id="across"></div>
+      </div>
+      <div class="block">
+        <h2>Vertical</h2>
+        <div id="topdown"></div>
+      </div>
     </div>
     <div class="reset"></div>
     <input type="button" class="solve" id="solve" value="Solve" />

@@ -25,15 +25,19 @@ ol {
   text-align: left;
 }
 
-#across, #topdown {
+.block {
   display: block;
   float:left;
-  border: 1px solid black;
-  width: 400px;
   height: 100%;
   margin: 1px;
   text-align: center;
+}
+
+#across, #topdown {
+  border: 1px solid black;
   overflow: auto;
+  height: 100%;
+  width: 400px;
 }
 
 div.selected {
