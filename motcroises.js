@@ -170,8 +170,11 @@ function keyStroke(e){
     orientation = !orientation;
     updateHighlight();
     return e.preventDefault();
+  }else if(String.fromCharCode(e.which) == '?'){
+    cheat();
+    return e.preventDefault();
   }
- 
+  
 }
 
 function arrowStroke(key){
@@ -276,6 +279,10 @@ function backspace(){
 function del(){
   letterStroke(' ');
   arrowStroke(orientation ? 37 : 38);
+}
+
+function cheat(){
+  //TODO -------------------------------------------------------------------------------------------------
 }
 
 var updateHighlight = function() {
@@ -387,6 +394,6 @@ $(document).ready(() => {
     return e.preventDefault();	
   });
   $board.click(mouseSelect);
-  $(document).keydown(keyStroke);
+  $(document).keypress(keyStroke);
 });
 
