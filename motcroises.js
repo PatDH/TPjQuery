@@ -56,8 +56,8 @@ function initialize(content){
 }
 
 var initializeClues = function (content) {
-  var $across = $("<ol>");
-  var $topdown = $("<ol>");
+  var $across = $("<ol></ol>");
+  var $topdown = $("<ol></ol>");
   for(var i = 0; i < content.numbers.length; ++i) {
     var row = content.numbers[i];
     
@@ -67,12 +67,12 @@ var initializeClues = function (content) {
       var topdownClue = content.downClues[clueIdx];
       
       if(acrossClue) {
-        var $li = $("<li></li>").text(acrossClue);
+        var $li = $("<li></li>").text(acrossClue).attr("id", "across"+clueIdx);
         $across.append($li);
       }
 
       if(topdownClue) {
-        var $li = $("<li></li>").text(topdownClue);
+        var $li = $("<li></li>").text(topdownClue).attr("id", "down"+clueIdx);
         $topdown.append($li);
       }
     }
