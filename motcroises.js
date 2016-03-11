@@ -97,8 +97,8 @@ function initialize(content){
 }
 
 var initializeClues = function (content) {
-  var $across = $("#across");
-  var $topdown = $("#topdown");
+  var $across = $("#across").empty();
+  var $topdown = $("#topdown").empty();
   for(var i = 0; i < content.numbers.length; ++i) {
     var row = content.numbers[i];
     
@@ -108,20 +108,28 @@ var initializeClues = function (content) {
       var topdownClue = content.downClues[clueIdx];
       
       if(acrossClue) {
-        var $li = $("<div></div>").text((i+1)+": ").attr("id", "across"+clueIdx);
+        var $li = $("#across"+i);
+        if($li[0]) {
+          $li.append(" &mdash; ");
+        } else {
+          $li = $("<div></div>").text((i+1)+": ").attr("id", "across"+i);
+        }
         $li.append($("<span></span>").text(acrossClue));
         $across.append($li);
       }
 
       if(topdownClue) {
-        var $li = $("<div></div>").text((j+1)+": ").attr("id", "down"+clueIdx);
+        var $li = $("#down"+j);
+        if($li[0]) {
+          $li.append(" &mdash; ");
+        } else {
+          $li = $("<div></div>").text((j+1)+": ").attr("id", "down"+j);
+        }
         $li.append($("<span></span>").text(topdownClue));
         $topdown.append($li);
       }
     }
   }
-  $("#across").append($across);
-  $("#topdown").append($topdown);
 };
 
 function keyStroke(e){
@@ -310,6 +318,8 @@ var load = function(motcroise) {
   wordsref = genIndex(motcroise);
 
   var header = createHeader(motcroise.nCols);
+
+  $board.empty();
 
   var $row = $("<div>").addClass("row");
   for(var i in header) {
