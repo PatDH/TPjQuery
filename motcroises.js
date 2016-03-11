@@ -22,23 +22,37 @@ function genIndex(motcroise){
   var result = Array(motcroise.nRows);
   var countrow = 0;
   var countcol = 0;
+  var next;
   for(var i = 0; i < result.length; i++) {
-    countrow++;
+    next = true;
     result[i] = Array(motcroise.nCols);
     for(var j = 0; j < result[i].length; j++){
       result[i][j] = Array(2);
-      if(format[i][j] == ".") countrow++;
-      else result[i][j][0] = countrow;
+      if(format[i][j] == ".") next = true;
+      else{
+        if(next){
+          countrow++;
+          next = false;
+        }
+        result[i][j][0] = countrow;
+      }
     }  
   }
   if(motcroise.nRows > 0)
   for(var j = 0; j < result[0].length; j++){
-    countcol++;
+    next = true;
     for(var i = 0; i < result.length; i++){
-      if(format[i][j] == ".") countcol++;
-      else result[i][j][1] = countcol;
+      if(format[i][j] == ".") next = true;
+      else {
+        if(next){
+          countcol++;
+          next = false;
+        }
+        result[i][j][1] = countcol;
+      }
     }
   }
+  alert(result);
   return result;
 }
 
