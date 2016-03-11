@@ -67,13 +67,13 @@ var initializeClues = function (content) {
       var topdownClue = content.downClues[clueIdx];
       
       if(acrossClue) {
-        var $li = $("<div></div>").text(clueIdx+": ").attr("id", "across"+clueIdx);
+        var $li = $("<div></div>").text((i+1)+": ").attr("id", "across"+clueIdx);
         $li.append($("<span></span>").text(acrossClue));
         $across.append($li);
       }
 
       if(topdownClue) {
-        var $li = $("<div></div>").text(clueIdx+": ").attr("id", "down"+clueIdx);
+        var $li = $("<div></div>").text((j+1)+": ").attr("id", "down"+clueIdx);
         $li.append($("<span></span>").text(topdownClue));
         $topdown.append($li);
       }
@@ -292,7 +292,7 @@ var load = function(motcroise) {
   updateHighlight();
 
   var $game = $("#game");
-  $game.toggle();
+  $game.show();
   $("#submit").blur();
   $("#game").css("height", (24*height) + "px");
 };
