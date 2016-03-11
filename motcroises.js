@@ -130,6 +130,22 @@ var initializeClues = function (content) {
       }
     }
   }
+  var array = $topdown.children();
+
+  array.sort(function(a, b) {
+    var idA = parseInt($(a).attr("id").substr(4));
+    var idB = parseInt($(b).attr("id").substr(4));
+    console.log(idA + " == " + idB);
+    if(idA < idB) {
+      return -1;
+    }else if(idA > idB) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  $topdown.empty();
+  $topdown.append(array);
 };
 
 function keyStroke(e){
