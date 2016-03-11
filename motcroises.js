@@ -25,6 +25,7 @@ function genIndex(motcroise){
   var next;
   for(var i = 0; i < result.length; i++) {
     next = true;
+    countrow = 0;
     result[i] = Array(motcroise.nCols);
     for(var j = 0; j < result[i].length; j++){
       result[i][j] = Array(2);
@@ -41,6 +42,7 @@ function genIndex(motcroise){
   if(motcroise.nRows > 0)
   for(var j = 0; j < result[0].length; j++){
     next = true;
+    countcol = 0;
     for(var i = 0; i < result.length; i++){
       if(format[i][j] == ".") next = true;
       else {
