@@ -54,6 +54,7 @@ function genIndex(motcroise){
       }
     }
   }
+  alert(result);
   return result;
 }
 
@@ -328,9 +329,7 @@ var load = function(motcroise) {
   select(1, 1);
 
   // selection de la case par un clique
-  $board.click(mouseSelect);
 
-  $(document).keydown(keyStroke);
 
   updateHighlight();
 
@@ -362,5 +361,7 @@ $(document).ready(() => {
       alert('Not a json file');
     return e.preventDefault();	
   });
+  $board.click(mouseSelect);
+  $(document).keydown(keyStroke);
 });
 
