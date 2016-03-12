@@ -156,6 +156,9 @@ var initializeClues = function (content) {
   });
   $topdown.empty();
   $topdown.append(array);
+  var height = 22*(content.nRows+1)
+  $topdown.css("height", height);
+  $across.css("height", height);
 };
 
 function keyStroke(e){
