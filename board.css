@@ -18,14 +18,13 @@
 
 #board {
   float:left;
-  margin-right: 6px;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 
 .block {
-  display: block;
   float: left;
-  height: 100%;
   margin: 1px;
   text-align: center;
 }
@@ -40,7 +39,7 @@
   overflow: auto;
   height: 100%;
   padding-left: 10px;
-  width: 400px;
+  width: 300px;
   text-align: left;
 }
 
@@ -50,6 +49,10 @@
 
 .wrong {
   background-color: red;
+}
+
+.cheat {
+  background-color: blue;
 }
 
 .selected {
@@ -73,8 +76,3 @@ span.content {
 #solve {
   margin: 20px 0px 0px 0px;
 }
-
-.cheat {
-  background-color: blue;
-}
-
