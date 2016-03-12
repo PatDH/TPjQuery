@@ -64,16 +64,22 @@ function select(i, j){
 
 function mouseSelect(e){
   var $newSelected = $(e.target);
-  if(e.target.tagName == "SPAN")
-    $newSelected = $newSelected.parent();
-  if($newSelected[0].tagName == "DIV"
-      && !$newSelected.hasClass("header")
-      && !$newSelected.hasClass("black")
-      && $newSelected.hasClass("case")) {
-    $selected.removeClass("selected");
-    $selected = $newSelected.addClass("selected");
+  console.log(e.target == $selected[0])
+  if($selected[0] == e.target) {
+    keyStroke({keyCode: 32, which: 32}); 
   }
-  updateHighlight();
+  else{
+    if(e.target.tagName == "SPAN")
+      $newSelected = $newSelected.parent();
+    if($newSelected[0].tagName == "DIV"
+        && !$newSelected.hasClass("header")
+        && !$newSelected.hasClass("black")
+        && $newSelected.hasClass("case")) {
+      $selected.removeClass("selected");
+      $selected = $newSelected.addClass("selected");
+    }
+    updateHighlight();
+  }
 }
 
 function initialize(content){
@@ -440,7 +446,7 @@ $(document).ready(() => {
   $(document).keypress(keyStroke);
   
   var clueSelection = function(e) {
-    console.log(e);
+    var newOrientation = e.currentTarget.id != "topdown";
     if(e.target.tagName == "SPAN") {
       var $span = $(e.target);
       alert($span.index() + ", " + $($span.siblings()[0]).text());
