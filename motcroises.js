@@ -32,7 +32,7 @@ function genIndex(motcroise){
     countrow = 0;
     result[i] = Array(motcroise.nCols);
     for(var j = 0; j < result[i].length; j++){
-      result[i][j] = new Array();
+      result[i][j] = {};
       if(acclues[numbs[i][j]]){
         next = false;
         countrow++;
@@ -258,6 +258,35 @@ function arrowStroke(key){
   } while($selected.hasClass("black")
       || $selected.hasClass("header"));
   $selected.addClass("selected");
+}
+
+function selectClue(ligne, colonne) {
+  var nmot;
+  var $element;
+  var $lastSelected;
+  if(orientation) { // Horizontal
+    nmot = wordsref[ligne][colonne].across;
+    if(nmot) {
+      $element = $("#across");
+      $lastSelected = $element.find(".selected");
+      $element = $($element.children()[ligne]);
+      $element = $element.find("span");
+      $element = $($element[nmot]);
+    }
+  } else { // Vertical
+    nmot = wordsref[ligne][colonne].downTop;
+    if(nmot) {
+      $element = $("#topdown");
+      $lastSelected = $element.find(".selected");
+      $element = $($element.children()[colonne+1]);
+      $element = $element.find("span");
+      $element = $($element[nmot]);
+    }
+  }
+  if($element) {
+    $lastSelected.removeClass("selected");
+    $element.addClass("selected");
+  }
 }
 
 function letterStroke(c){
