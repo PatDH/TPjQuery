@@ -338,6 +338,8 @@ var updateHighlight = function() {
       $semiselect.eq(i).addClass("semiselect");
     }
   }
+  $(".case").removeClass("selected");
+  $selected.addClass("selected");
 }
 
 var createHeader = function(length) {
@@ -388,6 +390,29 @@ var load = function(motcroise) {
   $("#game").css("height", (24*height) + "px");
 };
 
+function positionAt(){
+  return new Array($selected.index(), $selected.parent().index());
+}
+
+function verifyAll(e){
+  if($board){
+  
+  $selected.addClass("mark");
+  do{
+    if($selected.text() != soluceAt()){
+      letterStroke(soluceAt());
+      arrowStroke(37);
+      $selected.addClass("cheat");
+      arrowStroke(39);
+    }else{
+      arrowStroke(39);
+    }
+  }while(!$selected.hasClass("mark"));
+  $selected.removeClass("mark");
+  
+  }
+}
+
 $(document).ready(() => {
   $board = $('#board');
   var $form = $('#form');
@@ -424,5 +449,6 @@ $(document).ready(() => {
   
   $("#across").click(clueSelection);
   $("#topdown").click(clueSelection);
+  $("#solve").click(verifyAll);
 });
 
