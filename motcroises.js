@@ -19,40 +19,28 @@ var handler = function (nextCase, nextRow, idxCase, idxRow) {
 };
 
 function genIndex(motcroise){
-  var format = motcroise.diagram;
+  var format = motcroise.numbers;
+  var acclues = motcroise.acrossClues;
+  var doclues = motcroise.downClues;
   var result = Array(motcroise.nRows);
   var countrow = 0;
   var countcol = 0;
   var next;
   for(var i = 0; i < result.length; i++) {
-    next = true;
     countrow = 0;
     result[i] = Array(motcroise.nCols);
     for(var j = 0; j < result[i].length; j++){
-      result[i][j] = Array(2);
-      if(format[i][j] == ".") next = true;
-      else{
-        if(next){
-          countrow++;
-          next = false;
-        }
-        result[i][j][0] = countrow;
-      }
+      result[i][j] = new Array();
+      if(acclues[format[i][j]]) countrow++;
+      result[i][j]["across"] = countrow;
     }  
   }
   if(motcroise.nRows > 0)
   for(var j = 0; j < result[0].length; j++){
-    next = true;
     countcol = 0;
     for(var i = 0; i < result.length; i++){
-      if(format[i][j] == ".") next = true;
-      else {
-        if(next){
-          countcol++;
-          next = false;
-        }
-        result[i][j][1] = countcol;
-      }
+      if(doclues[format[i][j]]) countcol++;
+      result[i][j]["downTop"] = countcol;
     }
   }
   return result;
@@ -145,7 +133,6 @@ var initializeClues = function (content) {
   array.sort(function(a, b) {
     var idA = parseInt($(a).attr("id").substr(4));
     var idB = parseInt($(b).attr("id").substr(4));
-    console.log(idA + " == " + idB);
     if(idA < idB) {
       return -1;
     }else if(idA > idB) {
@@ -462,14 +449,14 @@ $(document).ready(() => {
       if(newOrientation) { // Horizontal
         var length = wordsref[position].length;
         for(var i = 0; i < length; ++i) {
-          if(wordsref[position][i][0] == nmot) {
+          if(wordsref[position][i].across == nmot) {
             select((position+1), (i+1));
             break;
           }
         }
       }else {
         for(var i = 0; i < wordsref.length; ++i) {
-          if(wordsref[i][position][1] == nmot) {
+          if(wordsref[i][position].downTop == nmot) {
             select((i+1), (position+1));
             break;
           }
