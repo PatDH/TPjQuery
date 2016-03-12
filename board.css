@@ -44,7 +44,7 @@
   text-align: left;
 }
 
-div.selected {
+.selected {
   background-color: yellow;
 }
 

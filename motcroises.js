@@ -59,14 +59,17 @@ function genIndex(motcroise){
 }
 
 function select(i, j){
-  $selected = $($($board.children()[i]).children()[j]).toggleClass("selected");
+  if($selected)
+    $selected.removeClass("selected");
+  $selected = $($($board.children()[i]).children()[j]).addClass("selected");
+  updateHighlight();
 }
 
 function mouseSelect(e){
   var $newSelected = $(e.target);
   console.log(e.target == $selected[0])
   if($selected[0] == e.target) {
-    keyStroke({keyCode: 32, which: 32}); 
+    keyStroke({keyCode: 32, which: 32, preventDefault: ()=>false}); 
   }
   else{
     if(e.target.tagName == "SPAN")
@@ -346,6 +349,7 @@ var updateHighlight = function() {
   }
   $(".case").removeClass("selected");
   $selected.addClass("selected");
+  $("#currentClues").text($(".selected", $(orientation? "#across":"#topdown")).text());
 }
 
 var createHeader = function(length) {
@@ -449,7 +453,31 @@ $(document).ready(() => {
     var newOrientation = e.currentTarget.id != "topdown";
     if(e.target.tagName == "SPAN") {
       var $span = $(e.target);
-      alert($span.index() + ", " + $($span.siblings()[0]).text());
+      if($span.index() == 0)
+        return ;
+      
+      $(".selected", $(orientation ? "#across":"#topdown")).removeClass("selected");
+      var position = parseInt($($span.siblings()[0]).text())-1;
+      var nmot = $span.index();
+      if(newOrientation) { // Horizontal
+        var length = wordsref[position].length;
+        for(var i = 0; i < length; ++i) {
+          if(wordsref[position][i][0] == nmot) {
+            select((position+1), (i+1));
+            break;
+          }
+        }
+      }else {
+        for(var i = 0; i < wordsref.length; ++i) {
+          if(wordsref[i][position][1] == nmot) {
+            select((i+1), (position+1));
+            break;
+          }
+        }
+      }
+      orientation = newOrientation;
+      $span.addClass("selected");
+      updateHighlight();
     }
   };
   
