@@ -269,7 +269,7 @@ function selectClue(ligne, colonne) {
     if(nmot) {
       $element = $("#across");
       $lastSelected = $element.find(".selected");
-      $element = $($element.children()[ligne]);
+      $element = $element.find("#across"+ligne);
       $element = $element.find("span");
       $element = $($element[nmot]);
     }
@@ -278,7 +278,7 @@ function selectClue(ligne, colonne) {
     if(nmot) {
       $element = $("#topdown");
       $lastSelected = $element.find(".selected");
-      $element = $($element.children()[colonne+1]);
+      $element = $element.find("#down"+colonne);
       $element = $element.find("span");
       $element = $($element[nmot]);
     }
