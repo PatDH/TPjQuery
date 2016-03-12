@@ -64,26 +64,28 @@ function select(i, j){
     $selected.removeClass("selected");
   $selected = $($($board.children()[i]).children()[j]).addClass("selected");
   updateHighlight();
+  selectClue(i-1,j-1);
 }
 
 function mouseSelect(e){
   var $newSelected = $(e.target);
   console.log(e.target == $selected[0])
-    if($selected[0] == e.target) {
-      keyStroke({keyCode: 32, which: 32, preventDefault: ()=>false}); 
+  if($selected[0] == e.target) {
+    keyStroke({keyCode: 32, which: 32, preventDefault: ()=>false}); 
+  }
+  else{
+    if(e.target.tagName == "SPAN")
+      $newSelected = $newSelected.parent();
+    if($newSelected[0].tagName == "DIV"
+        && !$newSelected.hasClass("header")
+        && !$newSelected.hasClass("black")
+        && $newSelected.hasClass("case")) {
+      $selected.removeClass("selected");
+      $selected = $newSelected.addClass("selected");
     }
-    else{
-      if(e.target.tagName == "SPAN")
-        $newSelected = $newSelected.parent();
-      if($newSelected[0].tagName == "DIV"
-          && !$newSelected.hasClass("header")
-          && !$newSelected.hasClass("black")
-          && $newSelected.hasClass("case")) {
-        $selected.removeClass("selected");
-        $selected = $newSelected.addClass("selected");
-      }
-      updateHighlight();
-    }
+  }
+  selectClue($selected.parent().index()-1, $selected.index()-1);
+  updateHighlight();
 }
 
 function initialize(content){
@@ -162,29 +164,20 @@ function keyStroke(e){
   var c = e.keyCode || e.which;
   if(c >= 37 && c <= 40){
     arrowStroke(c);
-    updateHighlight();
-    return e.preventDefault();
   }else if(c >= 65 && c <= 90){
     letterStroke(String.fromCharCode(c));
-    updateHighlight();
-    return e.preventDefault();
   }else if(c == 8){
     backspace();
-    updateHighlight();
-    return e.preventDefault();
   }else if(c == 46){
     del();
-    updateHighlight();
-    return e.preventDefault();
   }else if(c == 32){
     orientation = !orientation;
-    updateHighlight();
-    return e.preventDefault();
   }else if(String.fromCharCode(e.which) == '?'){
     cheat();
-    updateHighlight();
-    return e.preventDefault();
-  }
+  }else return;
+  selectClue($selected.parent().index()-1, $selected.index()-1);
+  updateHighlight();
+  return e.preventDefault();
 
 }
 
@@ -266,26 +259,24 @@ function selectClue(ligne, colonne) {
   var $lastSelected;
   if(orientation) { // Horizontal
     nmot = wordsref[ligne][colonne].across;
-    if(nmot) {
-      $element = $("#across");
-      $lastSelected = $element.find(".selected");
-      $element = $element.find("#across"+ligne);
-      $element = $element.find("span");
-      $element = $($element[nmot]);
-    }
+    $element = $("#across");
+    $lastSelected = $element.find(".selected");
+    if(!$lastSelected[0]) $lastSelected = $("#topdown").find(".selected");
+    $element = $element.find("#across"+ligne);
+    $element = $element.find("span");
+    $element = $($element[nmot]);
   } else { // Vertical
     nmot = wordsref[ligne][colonne].downTop;
-    if(nmot) {
-      $element = $("#topdown");
-      $lastSelected = $element.find(".selected");
-      $element = $element.find("#down"+colonne);
-      $element = $element.find("span");
-      $element = $($element[nmot]);
-    }
+    $element = $("#topdown");
+    $lastSelected = $element.find(".selected");
+    if(!$lastSelected.removeClass("selected")[0]) $lastSelected = $("#across").find(".selected");
+    $element = $element.find("#down"+colonne);
+    $element = $element.find("span");
+    $element = $($element[nmot]);
   }
   if($element) {
     $lastSelected.removeClass("selected");
-    $element.addClass("selected");
+    if(nmot) $element.addClass("selected");
   }
 }
 
@@ -313,7 +304,53 @@ function letterStroke(c){
     }
     return $row;
   };
+  verifyWordsAt();
   arrowStroke(orientation ? 39 : 40);
+}
+
+function verifyWordsAt(){
+  //orientation
+  $selected.addClass("semiselect");
+  var word = $(".semiselect");
+  if(verifyWord(word)) stroke(word);
+  //!orientation
+  orientation = !orientation;
+  selectClue($selected.parent().index()-1, $selected.index()-1);
+  updateHighlight();
+  $selected.addClass("semiselect");
+  word = $(".semiselect");
+  if(verifyWord(word)) stroke(word);
+  orientation = !orientation;
+  selectClue($selected.parent().index()-1, $selected.index()-1);
+  updateHighlight();
+}
+
+function verifyWord(word){
+  var bool = true;
+  var c;
+
+  for(var i = 0; i < word.length; i++){
+    c = $(word[i]);
+    bool = bool && c.text() != "" && !c.hasClass("wrong");
+  }
+
+//  word.each((c) => { bool = bool && $(this).text() != ""; 
+  //                   console.log($(this).text());
+    //                 console.log(bool);
+      //               bool = bool && !$(this).hasClass("wrong");
+        //             console.log(bool);});
+  return bool;
+}
+
+function stroke(word){
+  var ligne = $selected.parent().index()-1;
+  var colonne = $selected.index()-1;
+  var nmot = wordsref[ligne][colonne][orientation ? "across" : "downTop"];
+  for(var i = 0; i < word.length; i++){
+    $(word[i]).addClass("done");
+  }
+//  word.each((c) => { $(this).addClass("done"); });
+  $($(orientation ? "#across" + ligne : "#down" + colonne).find("span")[nmot]).addClass("stroke");
 }
 
 function backspace(){
