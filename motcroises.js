@@ -290,7 +290,7 @@ function letterStroke(c){
   var lenColumns = $selected.siblings().length;
   var key = c;
   var $span = $("span", $selected);
-  if(!$selected.hasClass("cheat")){
+  if(!$selected.hasClass("cheat") && !$selected.hasClass("done")){
     $span.text(c);
     if(c != soluceAt() && c != ' '){
       $selected.addClass("wrong");
