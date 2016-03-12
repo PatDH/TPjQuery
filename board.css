@@ -54,6 +54,10 @@
   background-color: blue;
 }
 
+.stroke {
+  text-decoration: line-through;
+}
+
 .selected {
   background-color: yellow;
 }
