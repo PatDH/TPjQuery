@@ -17,6 +17,7 @@
           <option value="IFT3225.json">IFT3225</option>
         </select>
         <input type="submit" id="submit" value="Confirm" />
+    		<input type="button" class="solve" id="solve" value="Solve" />
 			</p>
 		</form>
     <div id="game" class="row" >
@@ -24,22 +25,23 @@
       <span id="currentClues" ></span>
       <hr />
       
-      <div class="block">
+      <div class="block board">
         <div id="board"></div>
         <div class="auteur">
           <span id="auteur">Test</span>
         </div>
       </div>
-      <div class="block">
-        <h2>Horizontal</h2>
-        <div id="across"></div>
-      </div>
-      <div class="block">
-        <h2>Vertical</h2>
-        <div id="topdown"></div>
+      <div>
+        <div class="block clues">
+          <h2>Horizontal</h2>
+          <div id="across"></div>
+        </div>
+        <div class="block clues">
+          <h2>Vertical</h2>
+          <div id="topdown"></div>
+        </div>
       </div>
     </div>
-    <input type="button" class="solve" id="solve" value="Solve" />
 	</body>
 </html>
 		
