@@ -43,19 +43,19 @@ function genIndex(motcroise){
     }  
   }
   if(motcroise.nRows > 0)
-  for(var j = 0; j < result[0].length; j++){
-    next = true;
-    countcol = 0;
-    for(var i = 0; i < result.length; i++){
-      if(doclues[numbs[i][j]]){
-        next = false;
-        countcol++;
-      }else if(format[i][j] == "."){
-        next = true;
+    for(var j = 0; j < result[0].length; j++){
+      next = true;
+      countcol = 0;
+      for(var i = 0; i < result.length; i++){
+        if(doclues[numbs[i][j]]){
+          next = false;
+          countcol++;
+        }else if(format[i][j] == "."){
+          next = true;
+        }
+        result[i][j]["downTop"] = next ? 0 : countcol;
       }
-      result[i][j]["downTop"] = next ? 0 : countcol;
     }
-  }
   return result;
 }
 
@@ -69,21 +69,21 @@ function select(i, j){
 function mouseSelect(e){
   var $newSelected = $(e.target);
   console.log(e.target == $selected[0])
-  if($selected[0] == e.target) {
-    keyStroke({keyCode: 32, which: 32, preventDefault: ()=>false}); 
-  }
-  else{
-    if(e.target.tagName == "SPAN")
-      $newSelected = $newSelected.parent();
-    if($newSelected[0].tagName == "DIV"
-        && !$newSelected.hasClass("header")
-        && !$newSelected.hasClass("black")
-        && $newSelected.hasClass("case")) {
-      $selected.removeClass("selected");
-      $selected = $newSelected.addClass("selected");
+    if($selected[0] == e.target) {
+      keyStroke({keyCode: 32, which: 32, preventDefault: ()=>false}); 
     }
-    updateHighlight();
-  }
+    else{
+      if(e.target.tagName == "SPAN")
+        $newSelected = $newSelected.parent();
+      if($newSelected[0].tagName == "DIV"
+          && !$newSelected.hasClass("header")
+          && !$newSelected.hasClass("black")
+          && $newSelected.hasClass("case")) {
+        $selected.removeClass("selected");
+        $selected = $newSelected.addClass("selected");
+      }
+      updateHighlight();
+    }
 }
 
 function initialize(content){
@@ -112,12 +112,12 @@ var initializeClues = function (content) {
   var $topdown = $("#topdown").empty();
   for(var i = 0; i < content.numbers.length; ++i) {
     var row = content.numbers[i];
-    
+
     for(var j = 0; j < row.length; ++j) {
       var clueIdx = row[j];
       var acrossClue = content.acrossClues[clueIdx];
       var topdownClue = content.downClues[clueIdx];
-      
+
       if(acrossClue) {
         var $li = $("#across"+i);
         if($li[0]) {
@@ -185,7 +185,7 @@ function keyStroke(e){
     updateHighlight();
     return e.preventDefault();
   }
-  
+
 }
 
 function arrowStroke(key){
@@ -256,7 +256,7 @@ function arrowStroke(key){
   do {
     $selected = next();
   } while($selected.hasClass("black")
-       || $selected.hasClass("header"));
+      || $selected.hasClass("header"));
   $selected.addClass("selected");
 }
 
@@ -364,9 +364,10 @@ var createHeader = function(length) {
 
 var load = function(motcroise) {
   var content = motcroise.diagram;
+  var width = motcroise.nCols;
   var height = motcroise.nRows;
   $soluce = motcroise.solution;
-  
+
   wordsref = genIndex(motcroise);
 
   var header = createHeader(motcroise.nCols);
@@ -383,7 +384,9 @@ var load = function(motcroise) {
   // initialiser la table
   initialize(content);
   initializeClues(motcroise);
-  
+
+  $(".auteur").css("width", (24*width) + "px");
+
   $("#auteur").text(motcroise.author);
 
   // selection la 1ere case
@@ -406,20 +409,19 @@ function positionAt(){
 
 function verifyAll(e){
   if($board){
-  
-  $selected.addClass("mark");
-  do{
-    if($selected.text() != soluceAt()){
-      letterStroke(soluceAt());
-      arrowStroke(37);
-      $selected.addClass("cheat");
-      arrowStroke(39);
-    }else{
-      arrowStroke(39);
-    }
-  }while(!$selected.hasClass("mark"));
-  $selected.removeClass("mark");
-  
+    $selected.addClass("mark");
+    do{
+      if($selected.text() != soluceAt()){
+        letterStroke(soluceAt());
+        arrowStroke(37);
+        $selected.addClass("cheat");
+        arrowStroke(39);
+      }else{
+        arrowStroke(39);
+      }
+    }while(!$selected.hasClass("mark"));
+    $selected.removeClass("mark");
+
   }
 }
 
@@ -448,14 +450,14 @@ $(document).ready(() => {
   $board.click(mouseSelect);
   $(document).keydown(keyStroke);
   $(document).keypress(keyStroke);
-  
+
   var clueSelection = function(e) {
     var newOrientation = e.currentTarget.id != "topdown";
     if(e.target.tagName == "SPAN") {
       var $span = $(e.target);
       if($span.index() == 0)
         return ;
-      
+
       $(".selected", $(orientation ? "#across":"#topdown")).removeClass("selected");
       var position = parseInt($($span.siblings()[0]).text())-1;
       var nmot = $span.index();
@@ -480,7 +482,7 @@ $(document).ready(() => {
       updateHighlight();
     }
   };
-  
+
   $("#across").click(clueSelection);
   $("#topdown").click(clueSelection);
   $("#solve").click(verifyAll);
