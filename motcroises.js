@@ -113,7 +113,7 @@ var initializeClues = function (content) {
         if($li[0]) {
           $li.append(" &mdash; ");
         } else {
-          $li = $("<div></div>").text((i+1)+": ").attr("id", "across"+i);
+          $li = $("<div></div>").append($("<span></span>").text(""+(i+1))).append(": ").attr("id", "across"+i);
         }
         $li.append($("<span></span>").text(acrossClue));
         $across.append($li);
@@ -124,7 +124,7 @@ var initializeClues = function (content) {
         if($li[0]) {
           $li.append(" &mdash; ");
         } else {
-          $li = $("<div></div>").text((j+1)+": ").attr("id", "down"+j);
+          $li = $("<div></div>").append($("<span></span>").text(""+(j+1))).append(": ").attr("id", "down"+j);
         }
         $li.append($("<span></span>").text(topdownClue));
         $topdown.append($li);
@@ -413,5 +413,16 @@ $(document).ready(() => {
   $board.click(mouseSelect);
   $(document).keydown(keyStroke);
   $(document).keypress(keyStroke);
+  
+  var clueSelection = function(e) {
+    console.log(e);
+    if(e.target.tagName == "SPAN") {
+      var $span = $(e.target);
+      alert($span.index() + ", " + $($span.siblings()[0]).text());
+    }
+  };
+  
+  $("#across").click(clueSelection);
+  $("#topdown").click(clueSelection);
 });
 
