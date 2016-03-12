@@ -4,6 +4,7 @@ var $board;
 var $selected;
 var wordsref;
 var $soluce;
+var nbCasesRestantes;
 
 var orientation = true;
 
@@ -291,10 +292,13 @@ function letterStroke(c){
   var key = c;
   var $span = $("span", $selected);
   if(!$selected.hasClass("cheat") && !$selected.hasClass("done")){
+    var sol = soluceAt();
+    if(c == sol) --nbCasesRestantes;
+    if($selected.text() == sol) nbCasesRestantes++;
     $span.text(c);
-    if(c != soluceAt() && c != ' '){
+    if(c != sol && c != ' '){
       $selected.addClass("wrong");
-    }
+    }else if(nbCasesRestantes == 0) fini();
   }
   var nextCase = function() {
     var $n = $selected.next();
@@ -309,6 +313,10 @@ function letterStroke(c){
   };
   verifyWordsAt();
   arrowStroke(orientation ? 39 : 40);
+}
+
+function fini(){
+  alert("Well done!");
 }
 
 function verifyWordsAt(){
@@ -334,7 +342,7 @@ function verifyWord(word){
 
   for(var i = 0; i < word.length; i++){
     c = $(word[i]);
-    bool = bool && c.text() != "" && !c.hasClass("wrong");
+    bool = bool && c.text() != "" && c.text() != " " && !c.hasClass("wrong");
   }
   return bool;
 }
@@ -463,6 +471,8 @@ var load = function(motcroise) {
   $game.show();
   $("#submit").blur();
   $("#game").css("height", (22*height) + "px");
+  
+  nbCasesRestantes = $(".case").length - $(".black").length;
 };
 
 function positionAt(){
