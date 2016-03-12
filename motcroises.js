@@ -485,6 +485,8 @@ function verifyAll(e){
     $selected.removeClass("mark");
 
   }
+  selectClue($selected.parent().index()-1, $selected.index()-1);
+  updateHighlight();
 }
 
 $(document).ready(() => {
