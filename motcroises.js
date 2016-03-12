@@ -19,7 +19,8 @@ var handler = function (nextCase, nextRow, idxCase, idxRow) {
 };
 
 function genIndex(motcroise){
-  var format = motcroise.numbers;
+  var format = motcroise.diagram;
+  var numbs = motcroise.numbers;
   var acclues = motcroise.acrossClues;
   var doclues = motcroise.downClues;
   var result = Array(motcroise.nRows);
@@ -27,20 +28,32 @@ function genIndex(motcroise){
   var countcol = 0;
   var next;
   for(var i = 0; i < result.length; i++) {
+    next = true;
     countrow = 0;
     result[i] = Array(motcroise.nCols);
     for(var j = 0; j < result[i].length; j++){
       result[i][j] = new Array();
-      if(acclues[format[i][j]]) countrow++;
-      result[i][j]["across"] = countrow;
+      if(acclues[numbs[i][j]]){
+        next = false;
+        countrow++;
+      }else if(format[i][j] == "."){
+        next = true;
+      }
+      result[i][j]["across"] = next ? 0 : countrow;
     }  
   }
   if(motcroise.nRows > 0)
   for(var j = 0; j < result[0].length; j++){
+    next = true;
     countcol = 0;
     for(var i = 0; i < result.length; i++){
-      if(doclues[format[i][j]]) countcol++;
-      result[i][j]["downTop"] = countcol;
+      if(doclues[numbs[i][j]]){
+        next = false;
+        countcol++;
+      }else if(format[i][j] == "."){
+        next = true;
+      }
+      result[i][j]["downTop"] = next ? 0 : countcol;
     }
   }
   return result;
