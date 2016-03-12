@@ -1,5 +1,5 @@
 "use strict"
-
+var start;
 var $board;
 var $selected;
 var wordsref;
@@ -316,7 +316,8 @@ function letterStroke(c){
 }
 
 function fini(){
-  alert("Well done!");
+  var end = new Date();
+  alert("Well done! " + Math.floor((end.getTime()-start.getTime())/1000) + " seconds");
 }
 
 function verifyWordsAt(){
@@ -473,6 +474,7 @@ var load = function(motcroise) {
   $("#game").css("height", (22*height) + "px");
   
   nbCasesRestantes = $(".case").length - $(".black").length;
+  start = new Date();
 };
 
 function positionAt(){
@@ -500,6 +502,17 @@ function verifyAll(e){
 }
 
 $(document).ready(() => {
+  $("#aide").click((e) => {
+    var aide = "1. Utiliser les flèches pour naviguer dans la grille\n"
+      + "2. Utiliser le clique pour selectionner un case ou un indice.\n"
+      + "3. Utiliser l'espace ou un clique sur la case courante pour changer l'orientation.\n"
+      + "4. Utiliser la touche ? pour la triche a la case courante.\n"
+      + "5. Utiliser le backspace pour effacer une case précédente d'un mot non complété.\n"
+      + "6. Utiliser la touche DEL pour effacer la case courrante.\n"
+      + "7. Entrer une valeur alphabétique non accentué.";
+    alert(aide);
+  });
+  
   $board = $('#board');
   var $form = $('#form');
   var lastLoad = null;
