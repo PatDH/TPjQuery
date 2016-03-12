@@ -336,12 +336,6 @@ function verifyWord(word){
     c = $(word[i]);
     bool = bool && c.text() != "" && !c.hasClass("wrong");
   }
-
-//  word.each((c) => { bool = bool && $(this).text() != ""; 
-  //                   console.log($(this).text());
-    //                 console.log(bool);
-      //               bool = bool && !$(this).hasClass("wrong");
-        //             console.log(bool);});
   return bool;
 }
 
@@ -352,7 +346,6 @@ function stroke(word){
   for(var i = 0; i < word.length; i++){
     $(word[i]).addClass("done");
   }
-//  word.each((c) => { $(this).addClass("done"); });
   $($(orientation ? "#across" + ligne : "#down" + colonne).find("span")[nmot]).addClass("stroke");
 }
 
