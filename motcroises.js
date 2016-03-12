@@ -385,7 +385,7 @@ var load = function(motcroise) {
   initialize(content);
   initializeClues(motcroise);
 
-  $(".auteur").css("width", (24*width) + "px");
+  $(".auteur").css("width", (22*(width+1)) + "px");
 
   $("#auteur").text(motcroise.author);
 
@@ -400,7 +400,7 @@ var load = function(motcroise) {
   var $game = $("#game");
   $game.show();
   $("#submit").blur();
-  $("#game").css("height", (24*height) + "px");
+  $("#game").css("height", (22*height) + "px");
 };
 
 function positionAt(){
