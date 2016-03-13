@@ -482,6 +482,8 @@ function positionAt(){
 }
 
 function verifyAll(e){
+  var oldorientation = orientation;
+  orientation = true;
   if($board){
     $selected.addClass("mark");
     do{
@@ -497,6 +499,7 @@ function verifyAll(e){
     $selected.removeClass("mark");
 
   }
+  orientation = oldorientation;
   selectClue($selected.parent().index()-1, $selected.index()-1);
   updateHighlight();
 }
