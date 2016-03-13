@@ -1,0 +1,67 @@
+body {
+  background-image: url("http://bgfons.com/upload/newspaper_texture2847.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  color: black;
+  text-align: center;
+}
+
+body > div {
+  margin-top: 50px;
+  padding-top: 15px;
+}
+
+body > div > ul > li > hr {
+  margin-right: 10%;
+}
+
+body > div > ol > li {
+  text-align: left;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+body > div > hr {
+  color: black;
+  width: 70%;
+  height: 2px;
+}
+
+body > div {
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: rgba(255,255,255,0.75);
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+body > div > p {
+  text-align: justify;
+}
+
+body > div > ul {
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: left;
+}
+
+span {
+  font-weight: bold;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+a:visited {
+  color: blueviolet;
+}
+
+a:hover {
+  color: red;
+  text-decoration: underline; 
+}

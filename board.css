@@ -79,3 +79,13 @@ span.content {
 #solve {
   margin: 20px 0px 0px 40px;
 }
+
+#aide {
+  background-color: transparent;
+  border: 0px solid;
+  color: black;
+}
+
+#aide:hover {
+  border: 1px solid lightgrey;
+}

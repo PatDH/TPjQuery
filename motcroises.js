@@ -65,7 +65,6 @@ function select(i, j){
     $selected.removeClass("selected");
   $selected = $($($board.children()[i]).children()[j]).addClass("selected");
   updateHighlight();
-  selectClue(i-1,j-1);
 }
 
 function mouseSelect(e){
@@ -462,6 +461,7 @@ var load = function(motcroise) {
 
   // selection la 1ere case
   select(1, 1);
+  selectClue(0,0);
 
   // selection de la case par un clique
 
@@ -548,7 +548,7 @@ $(document).ready(() => {
       if($span.index() == 0)
         return ;
 
-      $(".selected", $(orientation ? "#across":"#topdown")).removeClass("selected");
+      $(orientation ? "#across":"#topdown").find(".selected").removeClass("selected");
       var position = parseInt($($span.siblings()[0]).text())-1;
       var nmot = $span.index();
       if(newOrientation) { // Horizontal
