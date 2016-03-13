@@ -1,0 +1,112 @@
+{"nCols":11,"nRows":11,
+"author":"www.mots-croises.ch","puzzle":"Mots croisés. Petite grille 1","copyright":"Copyright (c) 2016 Archisoft",
+"diagram":[
+ "-----------"
+,"-.-------.-"
+,"-----.-----"
+,"-----------"
+,"----.-.----"
+,"--.-----.--"
+,"----.-.----"
+,"-----------"
+,"-----.-----"
+,"-.-------.-"
+,"-----------"
+],
+"solution":[
+ "ASSIMILERAI"
+,"T.ORIFICE.N"
+,"TERRE.RAVIS"
+,"EXTENUERENT"
+,"NAIF.S.TSAR"
+,"DM.LOUPE.PU"
+,"RIVE.E.ROTI"
+,"INEXPLOITES"
+,"SERIE.BOISE"
+,"S.SONNENT.N"
+,"ECONDUISENT"
+],
+"numbers":[
+ [1,0,2,3,4,5,6,7,8,0,9]
+,[0,0,10,0,0,0,0,0,0,0,0]
+,[11,12,0,0,0,0,13,0,0,14,0]
+,[15,0,0,0,0,16,0,0,0,0,0]
+,[17,0,0,0,0,0,0,18,0,0,0]
+,[19,0,0,20,0,0,0,0,0,21,0]
+,[22,0,23,0,0,0,0,24,25,0,0]
+,[26,0,0,0,27,0,28,0,0,0,0]
+,[29,0,0,0,0,0,30,0,0,0,0]
+,[0,0,31,0,0,32,0,0,0,0,0]
+,[33,0,0,0,0,0,0,0,0,0,0]
+],
+"acrossClues":[null
+  ,"Absorberai"
+  ,null
+  ,null
+  ,null
+  ,null
+  ,null
+  ,null
+  ,null
+  ,null
+  ,"Ouverture"
+  ,"Bien caché"
+  ,null
+  ,"Emporte"
+  ,null
+  ,"Tuèrent"
+  ,null
+  ,"Innocent"
+  ,"Ancien empereur"
+  ,"Ancienne monnaie"
+  ,"Manqué!"
+  ,"Métal utilisé comme combustible"
+  ,"Fixé"
+  ,null
+  ,"Cuit à feu vif"
+  ,null
+  ,"Pas utilisés"
+  ,null
+  ,null
+  ,"Feuilleton"
+  ,"Recouvert"
+  ,"Tintent"
+  ,null
+  ,"Repoussent"
+],
+"downClues":[ null
+  ,"Apitoie"
+  ,"Né"
+  ,"Etourderie"
+  ,"Pronom"
+  ,"Arbre"
+  ,"Déchiffrer"
+  ,"Isolerions"
+  ,"Idéaux"
+  ,"Cultivent"
+  ,null
+  ,null
+  ,"Considéré"
+  ,null
+  ,"Impropres"
+  ,null
+  ,"Pas rare"
+  ,null
+  ,null
+  ,null
+  ,null
+  ,null
+  ,null
+  ,"Dos"
+  ,null
+  ,"Inflammation"
+  ,null
+  ,"Est accroché"
+  ,"Ecouté"
+  ,null
+  ,null
+  ,null
+  ,"A l'air"
+  ,null
+]
+}
