@@ -474,6 +474,9 @@ var load = function(motcroise) {
   $("#game").css("height", (22*height) + "px");
   
   nbCasesRestantes = $(".case").length - $(".black").length;
+  
+  $("#aide, #solve").show();
+  
   start = new Date();
 };
 
@@ -505,6 +508,7 @@ function verifyAll(e){
 }
 
 $(document).ready(() => {
+  $("#aide, #solve").hide();
   $("#aide").click((e) => {
     var aide = "1. Utiliser les flèches pour naviguer dans la grille\n"
       + "2. Utiliser le clique pour selectionner un case ou un indice.\n"
