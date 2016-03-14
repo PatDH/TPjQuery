@@ -316,7 +316,7 @@ function letterStroke(c){
 
 function fini(){
   var end = new Date();
-  alert("Well done! " + Math.floor((end.getTime()-start.getTime())/1000) + " seconds");
+  $("#msg").text("Well done! " + Math.floor((end.getTime()-start.getTime())/1000) + " seconds");
 }
 
 function verifyWordsAt(){
@@ -437,7 +437,7 @@ var load = function(motcroise) {
   var width = motcroise.nCols;
   var height = motcroise.nRows;
   $soluce = motcroise.solution;
-
+	$("#msg").text();
   wordsref = genIndex(motcroise);
 
   var header = createHeader(motcroise.nCols);
